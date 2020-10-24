@@ -2,17 +2,18 @@
 # qcSSMDhomo
 ### An R package for calculating strictly standardized mean difference (SSMD) for quality control in a high-throughput screening study under homoscedasticity
 
-#### qcSSMDhomo can be installed from github
+#qcSSMDhomo can be installed from github
+
 install.packages("devtools") # If not already installed
 
 devtools::install_github("Karena6688/qcSSMDhomo")
 
 ## An example of codes
-#####**************************************************************************************
-##### The main codes for using the R package qcSSMDhomo to generate the 
-##### tables, figures and values shown in the following paper.
-#####  Zhang XD*, Wang D, Sun S, Zhang H. Issues of z-factor and an 
-#####  approach to avoid them for quality control in high-throughput screening studies 
+#**************************************************************************************
+#The main codes for using the R package qcSSMDhomo to generate the 
+#tables, figures and values shown in the following paper.
+#Zhang XD*, Wang D, Sun S, Zhang H. Issues of z-factor and an 
+#approach to avoid them for quality control in high-throughput screening studies 
 #####**************************************************************************************
 
 library(qcSSMDhomo)
@@ -77,13 +78,13 @@ condt = data.df[, plateName] == "plate01"
 
 table( data.df[condt, wellName] )
 
-#####           MISC1            MISC2            MISC3            MISC4 
+#MISC1            MISC2            MISC3            MISC4 
 
-#####              16               16                8                8 
+#16               16                8                8 
 
-#####Negative Control  No Cell Control Positive Control      Test siRNAs 
+#negative Control  No Cell Control Positive Control      Test siRNAs 
 
-#####               8               16                8              304 
+#8               16                8              304 
 
 negName="Negative Control"; sampleName = "Test siRNAs"
 
@@ -114,7 +115,6 @@ ssmdEstStrong.mat = ssmdEst.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wel
                                              pREFtrim=0.05, approx=FALSE, method="UMVUE")
 
 ssmdCstrong.mat = ssmdC.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-
                                          negREF=negName, positiveCTRL=strongPos, 
 
                                          pREFtrim=0.05, Alpha=0.05, Beta=-3)
