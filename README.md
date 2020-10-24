@@ -120,37 +120,27 @@ ssmdEstStrong.mat = ssmdEst.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wel
 
 ssmdCstrong.mat = ssmdC.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
                                          negREF=negName, positiveCTRL=strongPos, 
-
                                          pREFtrim=0.05, Alpha=0.05, Beta=-3)
 
 zFactorStrong.mat = zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-
                                      negREF=negName, positiveCTRL=strongPos, pREFtrim=0.05, is.homoVAR=FALSE)								   
 
 zFactorStrong.mat2 = zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-
                                      negREF=negName, positiveCTRL=strongPos, pREFtrim=0.05, is.homoVAR=TRUE)								   
 								   
 
 ssmdEstWeaker.mat = ssmdEst.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-
                                              negREF=negName, positiveCTRL=weakerPos, 
-
                                              pREFtrim=0.05, approx=FALSE, method="UMVUE")
 
 ssmdCweaker.mat = ssmdC.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-
-
                                          negREF=negName, positiveCTRL=weakerPos, 
-
                                          pREFtrim=0.05, Alpha=0.05, Beta=-3)
 
 zFactorWeaker.mat = zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-
                                      negREF=negName, positiveCTRL=weakerPos,  pREFtrim=0.05, is.homoVAR=FALSE)
 
 zFactorWeaker.mat2 = zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-
                                      negREF=negName, positiveCTRL=weakerPos,  pREFtrim=0.05, is.homoVAR=TRUE)
 									 
 									 
@@ -253,7 +243,7 @@ which(zFactorWeaker.mat[,"zFactor"]<0.5)
 
 #####plate65 plate66 plate67 plate68 plate69 plate70 plate71 plate72 plate73 plate74 plate76 
 
-#####     65      66      67      68      69      70      71      72      73      74      76 
+#####65      66      67      68      69      70      71      72      73      74      76 
 
 #####plate77 plate78 plate79 
 
@@ -284,7 +274,6 @@ wellplotOrders = c(4, 7, 1, 2)
 pch.vec = rep(1, length(col.vec))
 
 x.df=cbind(plateWelltoX.fn(data.df[,c(plateName, rowName, colName)], nRow, nCol, byRow=FALSE),
-
             "wellType"=data.df[, wellName])
 
 Intensity = "intensity"  
@@ -295,7 +284,6 @@ yrange =  range(y.vec, na.rm=T)
 
 #####yrange = c(-15, max(yrange))
 plot( range(x.df$x), yrange, type="n", xlab="Plate Number (Plate-well series by column)",
-
       ylab="Normalized Intensity", axes=FALSE, main="")
 
 axis(2, las=2)
@@ -313,7 +301,6 @@ for( i in wellplotOrders ) {
 }
 
 legend("bottomright", legend=c("No-cell control", "Positive control", "Test siRNAs", "Negative control"), 
-
        col=col.vec[c(1, 2, 4, 7)], pch=1, cex=0.8)
 
 ##### Fig.2b: SSMD
@@ -345,11 +332,9 @@ lines( 1:length(plates), ssmdCstrong.mat[, "ssmdC"], col="red", lty=2 )
 lines( 1:length(plates), ssmdCweaker.mat[, "ssmdC"], col="blue", lty=2 ) 
 
 legend("topleft", legend=c("SSMD estimated value of No-cell Control", "SSMD estimated value of Positive control"), 
-
        col=c("red", "blue"), lty=1, pch=1, cex=1)
 
 legend("topright", legend=c("SSMD critical value of No-cell Control", "SSMD critical value of Positive control", "Rule-of-thumb cutoff"), 
-
        col=c("red", "blue", "black"), lty=c(2,2,1), cex=1)
 
 ##### Fig.2c: z-factor
@@ -377,7 +362,6 @@ lines( c(1-10, length(plates)+10 ), rep(0.5, 2), col="lightgreen" )
 lines( c(1-10, length(plates)+10 ), rep(0, 2), col="blue" ) 
 
 legend("bottomright", legend=c("No-cell Control", "Positive control", "z-factor = 0", "z-factor = 0.5"), 
-
        col=c("red", "blue", "black", "lightgreen"), lty=1, pch=c(1,1,NA,NA), cex=1)
 
 ### For Supplementary Figure 1 (CVB3 CRISPR/CAS9 primary screen)
@@ -437,15 +421,11 @@ uniqWells = unique(data.df[, wellName])
 uniqWells
 
 ssmdEst.mat = ssmdEst.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-
                                        negREF=negName, positiveCTRL=strongPos, 
-
                                        pREFtrim=0, approx=FALSE, method="UMVUE")
 
 ssmdC.mat = ssmdC.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-
                                    negREF=negName, positiveCTRL=strongPos, 
-
                                    pREFtrim=0, Alpha=0.05, Beta=-3)
 
 cbind(ssmdC.mat, ssmdEst.mat)
@@ -467,9 +447,7 @@ which(ssmdEst.mat[,"SSMDest"]> -5.5)
 zFactor.mat = 
 
 zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-
                  negREF=negName, positiveCTRL=strongPos, 
-
                  pREFtrim=0.05, is.homoVAR = FALSE)
 
 zFactor.mat				 
@@ -477,9 +455,7 @@ zFactor.mat
 zFactor.mat2 = 
 
 zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-
                  negREF=negName, positiveCTRL=strongPos, 
-
                  pREFtrim=0.05, is.homoVAR = TRUE)
 
 sum(zFactor.mat[, "zFactor"] < 0) # 2
@@ -531,7 +507,6 @@ wellplotOrders = 1:4
 pch.vec = rep(1, length(col.vec))
 
 x.df=cbind(plateWelltoX.fn(data.df[,c(plateName, rowName, colName)], nRow, nCol, byRow=FALSE),
-
             "wellType"=data.df[, wellName])
 
 Intensity = "intensity"  
@@ -541,7 +516,6 @@ y.vec = data.df[, Intensity]
 yrange =  range(y.vec, na.rm=T) 
 
 plot( range(x.df$x), yrange, type="n", xlab="Plate Number (Plate-well series by column)",
-
       ylab="Normalized Intensity", axes=FALSE, main="")
 
 axis(2, las=2)
@@ -559,7 +533,6 @@ for( i in wellplotOrders ) {
 }
 
 legend("bottomright", legend=c("test sgRNAs", "Negative control", "Positive control"), 
-
        col=col.vec[c(2,3,4)], pch=1, cex=1)
 
 
@@ -573,11 +546,7 @@ SSMD.mat = cbind("SSMDest"=ssmdEst.mat[, "SSMDest"], "ssmdC"=ssmdC.mat[, "ssmdC"
 
 yRange = c( min(SSMD.mat), 2 )
 
-plot( c(1, length(plates)), yRange, type="n", axes=FALSE, 
-
-      xlab="Plate Number", ylab="SSMD", 
-
-	  main="")
+plot( c(1, length(plates)), yRange, type="n", axes=FALSE, xlab="Plate Number", ylab="SSMD",  main="")
 
 axis(1, at=xat, labels=xat, las=1)
 
@@ -594,7 +563,6 @@ lines( 1:length(plates), ssmdC.mat[, "ssmdC"], col="red", lty=2 )
 lines( c(1-10, length(plates)+10 ), rep(-5.5, 2), col="grey" ) 
 
 legend("topright", legend=c("SSMD estimated value", "SSMD critical value", "Rule-of-thumb cutoff"), 
-
        col=c("black", "red", "grey"), lty=c(1,2,1), pch=c(1, 3, NA), cex=1)
 
 ### Suppl Fig.1c
@@ -605,11 +573,7 @@ xat = c(1:20); yat = 2:(-8)/2
 
 yRange = range(zFactor.mat[, "zFactor"])
 
-plot( c(1, length(plates) ), yRange, type="n", axes=FALSE, 
-
-      xlab="Plate Number", ylab="z-factor", 
-
-	  main="")
+plot( c(1, length(plates) ), yRange, type="n", axes=FALSE, xlab="Plate Number", ylab="z-factor", main="")
 
 axis(1, at=xat, labels=xat, las=1)
 
@@ -624,7 +588,6 @@ lines( c(1-10, length(plates)+10 ), rep(0.5, 2), col="red" )
 lines( c(1-10, length(plates)+10 ), rep(0, 2), col="lightblue" ) 
 
 legend("bottomright", legend=c("Positive control", "z-factor = 0", "z-factor = 0.5"), 
-
        col=c("black", "lightblue", "red"), lty=1, pch=c(1,NA,NA), cex=1)
 
 ## Data
