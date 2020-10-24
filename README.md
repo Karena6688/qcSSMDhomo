@@ -9,7 +9,8 @@ install.packages("devtools") # If not already installed
 devtools::install_github("Karena6688/qcSSMDhomo")
 
 ## An example of codes
-#**************************************************************************************
+
+#####**************************************************************************************
 #The main codes for using the R package qcSSMDhomo to generate the 
 #tables, figures and values shown in the following paper.
 #Zhang XD*, Wang D, Sun S, Zhang H. Issues of z-factor and an 
@@ -452,7 +453,7 @@ which(ssmdC.mat[,"ssmdC"] < ssmdEst.mat[,"SSMDest"])
 
 #####plate03 plate07 plate09 plate13 plate14 plate15 
 
-#####      3       7       9      13      14      15 
+#####3       7       9      13      14      15 
 
 which(ssmdEst.mat[,"SSMDest"]> -5.5)
 
