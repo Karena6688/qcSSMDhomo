@@ -114,10 +114,8 @@ uniqWells
 
 #calculating SSMD estimated and critical values and z-factor
 
-ssmdEstStrong.mat = ssmdEst.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-
+ssmdEstStrong.mat = ssmdEst.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")],
                                              negREF=negName, positiveCTRL=strongPos, 
-
                                              pREFtrim=0.05, approx=FALSE, method="UMVUE")
 
 ssmdCstrong.mat = ssmdC.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
