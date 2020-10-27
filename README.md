@@ -123,10 +123,10 @@ ssmdCstrong.mat = ssmdC.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wellTyp
                                          pREFtrim=0.05, Alpha=0.05, Beta=-3)
 
 zFactorStrong.mat = zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-                                     negREF=negName, positiveCTRL=strongPos, pREFtrim=0.05, is.homoVAR=FALSE)								   
+                                     negREF=negName, positiveCTRL=strongPos, pREFtrim=0.05, is.homoVAR=TRUE)								   
 
 zFactorStrong.mat2 = zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-                                     negREF=negName, positiveCTRL=strongPos, pREFtrim=0.05, is.homoVAR=TRUE)								   
+                                     negREF=negName, positiveCTRL=strongPos, pREFtrim=0.05, is.homoVAR=FALSE)								   
 								   
 
 ssmdEstWeaker.mat = ssmdEst.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
@@ -138,10 +138,10 @@ ssmdCweaker.mat = ssmdC.homoVAR.frame.fn(dataIn.df=data.df[, c("plate", "wellTyp
                                          pREFtrim=0.05, Alpha=0.05, Beta=-3)
 
 zFactorWeaker.mat = zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-                                     negREF=negName, positiveCTRL=weakerPos,  pREFtrim=0.05, is.homoVAR=FALSE)
+                                     negREF=negName, positiveCTRL=weakerPos,  pREFtrim=0.05, is.homoVAR=TRUE)
 
 zFactorWeaker.mat2 = zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-                                     negREF=negName, positiveCTRL=weakerPos,  pREFtrim=0.05, is.homoVAR=TRUE)
+                                     negREF=negName, positiveCTRL=weakerPos,  pREFtrim=0.05, is.homoVAR=FALSE)
 									 
 									 
 
@@ -171,31 +171,31 @@ which(ssmdEstWeaker.mat[,"SSMDest"]> -4.2)
 
 #####1      14      31      53      58      67      68      69      72      74      79 
 
-which(zFactorStrong.mat[,"zFactor"]<0)
-
-#####plate31 
-
-#####31 
-
-sum(zFactorStrong.mat2[,"zFactor"]<0) #1
-
 which(zFactorStrong.mat2[,"zFactor"]<0)
 
 #####plate31 
 
 #####31 
 
-sum(zFactorStrong.mat[,"zFactor"]<0.5) #10
+sum(zFactorStrong.mat[,"zFactor"]<0) #1
 
-which(zFactorStrong.mat[,"zFactor"]<0.5)
+which(zFactorStrong.mat[,"zFactor"]<0)
+
+#####plate31 
+
+#####31 
+
+sum(zFactorStrong.mat2[,"zFactor"]<0.5) #10
+
+which(zFactorStrong.mat2[,"zFactor"]<0.5)
 
 #####plate17 plate31 plate32 plate33 plate34 plate36 plate37 plate38 plate41 plate61 
 
 ####17      31      32      33      34      36      37      38      41      61 
 
-sum(zFactorStrong.mat2[,"zFactor"]<0.5) #25
+sum(zFactorStrong.mat[,"zFactor"]<0.5) #25
 
-which(zFactorStrong.mat2[,"zFactor"]<0.5)
+which(zFactorStrong.mat[,"zFactor"]<0.5)
 
 #####plate01 plate05 plate09 plate15 plate17 plate19 plate21 plate22 plate30 plate31 
 
@@ -209,25 +209,25 @@ which(zFactorStrong.mat2[,"zFactor"]<0.5)
 
 #####43      46      53      61      69 
 
-sum(zFactorWeaker.mat[,"zFactor"]<0) # 7			 
+sum(zFactorWeaker.mat2[,"zFactor"]<0) # 7			 
 
-which(zFactorWeaker.mat[,"zFactor"]<0)
+which(zFactorWeaker.mat2[,"zFactor"]<0)
 
 #####plate14 plate31 plate67 plate69 plate72 plate74 plate79 
 
 #####14      31      67      69      72      74      79 
 
-sum(zFactorWeaker.mat2[,"zFactor"]<0) # 10			 
+sum(zFactorWeaker.mat[,"zFactor"]<0) # 10			 
 
-which(zFactorWeaker.mat2[,"zFactor"]<0)
+which(zFactorWeaker.mat[,"zFactor"]<0)
 
 #####plate14 plate31 plate53 plate58 plate67 plate68 plate69 plate72 plate74 plate79 
 
 ####14      31      53      58      67      68      69      72      74      79 
 
-sum(zFactorWeaker.mat[,"zFactor"]<0.5)  # 47
+sum(zFactorWeaker.mat2[,"zFactor"]<0.5)  # 47
 
-which(zFactorWeaker.mat[,"zFactor"]<0.5)
+which(zFactorWeaker.mat2[,"zFactor"]<0.5)
 
 #####plate01 plate02 plate03 plate04 plate05 plate07 plate08 plate10 plate11 plate12 plate14 
 
@@ -249,9 +249,9 @@ which(zFactorWeaker.mat[,"zFactor"]<0.5)
 
 #####77      78      79 
 
-sum(zFactorWeaker.mat2[,"zFactor"]<0.5) #55
+sum(zFactorWeaker.mat[,"zFactor"]<0.5) #55
 
-which(zFactorWeaker.mat2[,"zFactor"]<0.5)
+which(zFactorWeaker.mat[,"zFactor"]<0.5)
 
 cbind(which(zFactorWeaker.mat[,"zFactor"]<0.5), which(zFactorWeaker.mat2[,"zFactor"]<0.5)) 
 	 
@@ -444,47 +444,43 @@ which(ssmdEst.mat[,"SSMDest"]> -5.5)
 
 #####3       7       9      13      14      15
 	  
-zFactor.mat = 
-
-zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
-                 negREF=negName, positiveCTRL=strongPos, 
-                 pREFtrim=0.05, is.homoVAR = FALSE)
-
-zFactor.mat				 
-
-zFactor.mat2 = 
-
-zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
+zFactor.mat = zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
                  negREF=negName, positiveCTRL=strongPos, 
                  pREFtrim=0.05, is.homoVAR = TRUE)
 
-sum(zFactor.mat[, "zFactor"] < 0) # 2
+zFactor.mat				 
 
-which(zFactor.mat[, "zFactor"] < 0)
+zFactor.mat2 = zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
+                 negREF=negName, positiveCTRL=strongPos, 
+                 pREFtrim=0.05, is.homoVAR = FALSE)
+
+sum(zFactor.mat2[, "zFactor"] < 0) # 2
+
+which(zFactor.mat2[, "zFactor"] < 0)
 
 #####plate07 plate09 
 
 #####7       9 
 
-sum(zFactor.mat2[, "zFactor"] < 0) # 1
+sum(zFactor.mat[, "zFactor"] < 0) # 1
 
-which(zFactor.mat2[, "zFactor"] < 0)
+which(zFactor.mat[, "zFactor"] < 0)
 
 #####plate07 
 
 #####7
 
-sum(zFactor.mat[, "zFactor"] < 0.5) # 9
+sum(zFactor.mat2[, "zFactor"] < 0.5) # 9
 
-which(zFactor.mat[, "zFactor"] < 0.5)
+which(zFactor.mat2[, "zFactor"] < 0.5)
 
 #####plate03 plate07 plate08 plate09 plate11 plate13 plate14 plate15 plate17 
 
 #####3       7       8       9      11      13      14      15      17 
 
-sum(zFactor.mat2[, "zFactor"] < 0.5) # 8
+sum(zFactor.mat[, "zFactor"] < 0.5) # 8
 
-which(zFactor.mat2[, "zFactor"] < 0.5)
+which(zFactor.mat[, "zFactor"] < 0.5)
 
 #####plate03 plate07 plate09 plate11 plate13 plate14 plate15 plate17 
 
