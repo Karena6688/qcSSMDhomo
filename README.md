@@ -41,16 +41,13 @@ for( i in 1:length(n1.vec) ) {
 rbind(n1.vec, n2.vec, round(ssmdC.vec, 2) )
 
 #n1.vec 304.00 12.00 76.00 76.00 1276.00 20.00  8.00  8.00  4.00  6.00  5.00   4.0  4.00
-
 #n2.vec   8.00  8.00  6.00  3.00   12.00 12.00 16.00  8.00  4.00  2.00  2.00   3.0  2.00
-
 #-3.47 -4.14 -3.66 -3.83   -3.35 -3.86 -4.03 -4.31 -5.21 -5.28 -5.54  -5.5 -5.93
 
 ### For Figure 2 (Mucin primary screen) Considering both strong and weaker positive control 
 
-#####dataMucin.df = read.csv("data.mucinHTS.csv")
-
-#####save(dataMucin.df, file="data.mucinHTS.RData")
+#dataMucin.df = read.csv("data.mucinHTS.csv")
+#save(dataMucin.df, file="data.mucinHTS.RData")
 
 data("data.mucinHTS", package="qcSSMDhomo")
 
@@ -58,13 +55,10 @@ data.df = dataMucin.df
 
 data.df[1:3, ]
 
-#####plate         wellType row column  intensity
-
-#####1 plate01  No Cell Control   1      1 -3.5306719
-
-#####2 plate01 Positive Control   1      2 -1.3234041
-
-#####3 plate01            MISC1   1      3  0.2775412
+#plate         wellType row column  intensity
+#1 plate01  No Cell Control   1      1 -3.5306719
+#2 plate01 Positive Control   1      2 -1.3234041
+#3 plate01            MISC1   1      3  0.2775412
 
 plateName = "plate"; rowName = "row"; colName = "column"
 
@@ -72,20 +66,17 @@ wellName = "wellType"
 
 unique(data.df[, wellName])
 
-#####[1] "No Cell Control"  "Positive Control" "MISC1"            "Test siRNAs"     
-
-#####[5] "MISC2"            "MISC3"            "Negative Control" "MISC4"  
+#[1] "No Cell Control"  "Positive Control" "MISC1"            "Test siRNAs"     
+#[5] "MISC2"            "MISC3"            "Negative Control" "MISC4"  
 
 condt = data.df[, plateName] == "plate01"
 
 table( data.df[condt, wellName] )
 
 #MISC1            MISC2            MISC3            MISC4 
-
 #16               16                8                8 
 
 #negative Control  No Cell Control Positive Control      Test siRNAs 
-
 #8               16                8              304 
 
 negName="Negative Control"; sampleName = "Test siRNAs"
@@ -144,106 +135,83 @@ zFactorWeaker.mat2 = zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType",
 which(ssmdCstrong.mat[,"ssmdC"] < ssmdEstStrong.mat[,"SSMDest"])
 
 #plate31 
-
 #31
 
 which(ssmdEstStrong.mat[,"SSMDest"]> -4.2)
 
-#####plate31 
-
-#####31
+#plate31 
+#31
 
 sum(ssmdCweaker.mat[,"ssmdC"] < ssmdEstWeaker.mat[,"SSMDest"]) #11
 
 which(ssmdCweaker.mat[,"ssmdC"] < ssmdEstWeaker.mat[,"SSMDest"])
 
-#####plate01 plate14 plate31 plate53 plate58 plate67 plate68 plate69 plate72 plate74 plate79 
-
-#####1      14      31      53      58      67      68      69      72      74      79 
+#plate01 plate14 plate31 plate53 plate58 plate67 plate68 plate69 plate72 plate74 plate79 
+#1      14      31      53      58      67      68      69      72      74      79 
 
 which(ssmdEstWeaker.mat[,"SSMDest"]> -4.2)
 
-#####plate01 plate14 plate31 plate53 plate58 plate67 plate68 plate69 plate72 plate74 plate79 
-
-#####1      14      31      53      58      67      68      69      72      74      79 
+#plate01 plate14 plate31 plate53 plate58 plate67 plate68 plate69 plate72 plate74 plate79 
+#1      14      31      53      58      67      68      69      72      74      79 
 
 which(zFactorStrong.mat2[,"zFactor"]<0)
 
-#####plate31 
-
-#####31 
+#plate31 
+#31 
 
 sum(zFactorStrong.mat[,"zFactor"]<0) #1
 
 which(zFactorStrong.mat[,"zFactor"]<0)
 
-#####plate31 
-
-#####31 
+#plate31 
+#31 
 
 sum(zFactorStrong.mat2[,"zFactor"]<0.5) #10
 
 which(zFactorStrong.mat2[,"zFactor"]<0.5)
 
-#####plate17 plate31 plate32 plate33 plate34 plate36 plate37 plate38 plate41 plate61 
-
-####17      31      32      33      34      36      37      38      41      61 
+#plate17 plate31 plate32 plate33 plate34 plate36 plate37 plate38 plate41 plate61 
+#17      31      32      33      34      36      37      38      41      61 
 
 sum(zFactorStrong.mat[,"zFactor"]<0.5) #25
 
 which(zFactorStrong.mat[,"zFactor"]<0.5)
 
-#####plate01 plate05 plate09 plate15 plate17 plate19 plate21 plate22 plate30 plate31 
-
-#####1       5       9      15      17      19      21      22      30      31 
-
-#####plate32 plate33 plate34 plate35 plate36 plate37 plate38 plate40 plate41 plate42 
-
-#####32      33      34      35      36      37      38      40      41      42 
-
-#####plate43 plate46 plate53 plate61 plate69 
-
-#####43      46      53      61      69 
+#plate01 plate05 plate09 plate15 plate17 plate19 plate21 plate22 plate30 plate31 
+#1       5       9      15      17      19      21      22      30      31 
+#plate32 plate33 plate34 plate35 plate36 plate37 plate38 plate40 plate41 plate42 
+#32      33      34      35      36      37      38      40      41      42 
+#plate43 plate46 plate53 plate61 plate69 
+#43      46      53      61      69 
 
 sum(zFactorWeaker.mat2[,"zFactor"]<0) # 7			 
 
 which(zFactorWeaker.mat2[,"zFactor"]<0)
 
-#####plate14 plate31 plate67 plate69 plate72 plate74 plate79 
-
-#####14      31      67      69      72      74      79 
+#plate14 plate31 plate67 plate69 plate72 plate74 plate79 
+#14      31      67      69      72      74      79 
 
 sum(zFactorWeaker.mat[,"zFactor"]<0) # 10			 
 
 which(zFactorWeaker.mat[,"zFactor"]<0)
 
-#####plate14 plate31 plate53 plate58 plate67 plate68 plate69 plate72 plate74 plate79 
-
-####14      31      53      58      67      68      69      72      74      79 
+#plate14 plate31 plate53 plate58 plate67 plate68 plate69 plate72 plate74 plate79 
+#14      31      53      58      67      68      69      72      74      79 
 
 sum(zFactorWeaker.mat2[,"zFactor"]<0.5)  # 47
 
 which(zFactorWeaker.mat2[,"zFactor"]<0.5)
 
-#####plate01 plate02 plate03 plate04 plate05 plate07 plate08 plate10 plate11 plate12 plate14 
-
-#####1       2       3       4       5       7       8      10      11      12      14 
-
-#####plate16 plate17 plate18 plate20 plate23 plate24 plate25 plate26 plate27 plate31 plate36 
-
-#####16      17      18      20      23      24      25      26      27      31      36 
-
-#####plate37 plate47 plate50 plate53 plate56 plate57 plate58 plate60 plate61 plate62 plate64 
-
-#####37      47      50      53      56      57      58      60      61      62      64 
-
-#####plate65 plate66 plate67 plate68 plate69 plate70 plate71 plate72 plate73 plate74 plate76 
-
-#####65      66      67      68      69      70      71      72      73      74      76 
-
-#####plate77 plate78 plate79 
-
-#####77      78      79 
+#plate01 plate02 plate03 plate04 plate05 plate07 plate08 plate10 plate11 plate12 plate14 
+#1       2       3       4       5       7       8      10      11      12      14 
+#plate16 plate17 plate18 plate20 plate23 plate24 plate25 plate26 plate27 plate31 plate36 
+#16      17      18      20      23      24      25      26      27      31      36 
+#plate37 plate47 plate50 plate53 plate56 plate57 plate58 plate60 plate61 plate62 plate64 
+#37      47      50      53      56      57      58      60      61      62      64 
+#plate65 plate66 plate67 plate68 plate69 plate70 plate71 plate72 plate73 plate74 plate76 
+#65      66      67      68      69      70      71      72      73      74      76 
+#plate77 plate78 plate79 
+#77      78      79 
 
 sum(zFactorWeaker.mat[,"zFactor"]<0.5) #55
 
@@ -259,9 +227,8 @@ par(mfrow=c(1,1))
 
 uniqWells
 
-#####[1] "No Cell Control"  "Positive Control" "MISC1"            "Test siRNAs"     
-
-#####[5] "MISC2"            "MISC3"            "Negative Control" "MISC4"  
+#[1] "No Cell Control"  "Positive Control" "MISC1"            "Test siRNAs"     
+#[5] "MISC2"            "MISC3"            "Negative Control" "MISC4"  
 
 col.vec=c("red", "blue", "lightblue", "grey", "white", "white", "green", "white")
 
@@ -278,7 +245,6 @@ y.vec = data.df[, Intensity]
 
 yrange =  range(y.vec, na.rm=T) 
 
-#####yrange = c(-15, max(yrange))
 plot( range(x.df$x), yrange, type="n", xlab="Plate Number (Plate-well series by column)",
       ylab="Normalized Intensity", axes=FALSE, main="")
 
@@ -362,9 +328,8 @@ legend("bottomright", legend=c("No-cell Control", "Positive control", "z-factor 
 
 ### For Supplementary Figure 1 (CVB3 CRISPR/CAS9 primary screen)
 
-#####dataCVB3.df = read.csv("data.CVB3.csv")
-
-#####save(dataCVB3.df, file="data.CVB3CRISPR.RData")
+#dataCVB3.df = read.csv("data.CVB3.csv")
+#save(dataCVB3.df, file="data.CVB3CRISPR.RData")
 
 data("data.CVB3CRISPR", package="qcSSMDhomo")
 
@@ -372,13 +337,10 @@ data.df = dataCVB3.df
 
 data.df[1:3, ]
 
-#####plate wellType row column intensity
-
-#####1 plate01     MISC   1      1        NA
-
-#####2 plate01     MISC   1      2        NA
-
-#####3 plate01   Sample   1      3 -1.123124
+#plate wellType row column intensity
+#1 plate01     MISC   1      1        NA
+#2 plate01     MISC   1      2        NA
+#3 plate01   Sample   1      3 -1.123124
 
 plateName = "plate"; rowName = "row"; colName = "column"
 
@@ -386,17 +348,15 @@ wellName = "wellType"
 
 unique(data.df[, wellName])
 
-#####[1] MISC             Sample           Negative Control Positive Control
-
-#####Levels: MISC Negative Control Positive Control Sample
+#[1] MISC             Sample           Negative Control Positive Control
+#Levels: MISC Negative Control Positive Control Sample
 
 condt = data.df[, plateName] == "plate01"
 
 table( data.df[condt, wellName] )
 
-#####MISC Negative Control Positive Control           Sample 
-
-#####9                5                2               80 
+#MISC Negative Control Positive Control           Sample 
+#9                5                2               80 
 
 negName="Negative Control"; sampleName = "Sample"
 
@@ -430,15 +390,13 @@ sum( ssmdC.mat[,"ssmdC"] < ssmdEst.mat[,"SSMDest"] ) #[1] 6
 
 which(ssmdC.mat[,"ssmdC"] < ssmdEst.mat[,"SSMDest"])
 
-#####plate03 plate07 plate09 plate13 plate14 plate15 
-
-#####3       7       9      13      14      15 
+#plate03 plate07 plate09 plate13 plate14 plate15 
+#3       7       9      13      14      15 
 
 which(ssmdEst.mat[,"SSMDest"]> -5.5)
 
-#####plate03 plate07 plate09 plate13 plate14 plate15 
-
-#####3       7       9      13      14      15
+#plate03 plate07 plate09 plate13 plate14 plate15 
+#3       7       9      13      14      15
 	  
 zFactor.mat = zFactor.frame.fn(dataIn.df=data.df[, c("plate", "wellType", "intensity")], 
                  negREF=negName, positiveCTRL=strongPos, 
@@ -454,33 +412,29 @@ sum(zFactor.mat2[, "zFactor"] < 0) # 2
 
 which(zFactor.mat2[, "zFactor"] < 0)
 
-#####plate07 plate09 
-
-#####7       9 
+#plate07 plate09 
+#7       9 
 
 sum(zFactor.mat[, "zFactor"] < 0) # 1
 
 which(zFactor.mat[, "zFactor"] < 0)
 
-#####plate07 
-
-#####7
+#plate07 
+#7
 
 sum(zFactor.mat2[, "zFactor"] < 0.5) # 9
 
 which(zFactor.mat2[, "zFactor"] < 0.5)
 
-#####plate03 plate07 plate08 plate09 plate11 plate13 plate14 plate15 plate17 
-
-#####3       7       8       9      11      13      14      15      17 
+#plate03 plate07 plate08 plate09 plate11 plate13 plate14 plate15 plate17 
+#3       7       8       9      11      13      14      15      17 
 
 sum(zFactor.mat[, "zFactor"] < 0.5) # 8
 
 which(zFactor.mat[, "zFactor"] < 0.5)
 
-#####plate03 plate07 plate09 plate11 plate13 plate14 plate15 plate17 
-
-#####3       7       9      11      13      14      15      17 
+#plate03 plate07 plate09 plate11 plate13 plate14 plate15 plate17 
+#3       7       9      11      13      14      15      17 
 
 ### Suppl Fig.1a
 
@@ -490,7 +444,7 @@ par(mfrow=c(1,1))
 
 uniqWells
 
-#####[1] empty        Sample       negativeCTRL positiveCTRL
+#[1] empty        Sample       negativeCTRL positiveCTRL
 
 col.vec=c("black", "grey", "green","red")
 
