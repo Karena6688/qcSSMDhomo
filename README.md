@@ -588,7 +588,7 @@ Kim, H. S. et al. Arrayed CRISPR screen with image-based assay reliably uncovers
 
 ## Functions
 
-qcSSMD contains the following major functions.
+qcSSMDhomo contains the following major functions.
 
 plateWelltoX.fn
 
