@@ -246,48 +246,6 @@ cbind(which(zFactorWeaker.mat[,"zFactor"]<0.5), which(zFactorWeaker.mat2[,"zFact
 	 
 ##### Fig.2a: display data
 
-par(mar=c(5.1, 4.4, 1.1, 1.1))
-
-par(mfrow=c(1,1))
-
-uniqWells
-
-#[1] "No Cell Control"  "Positive Control" "MISC1"            "Test siRNAs"      "MISC2"            "MISC3"            "Negative Control" "MISC4"  
-
-col.vec=c("red", "blue", "lightblue", "grey", "white", "white", "green", "white")
-
-wellplotOrders = c(4, 7, 1, 2)
-
-pch.vec = rep(1, length(col.vec))
-
-x.df=cbind(plateWelltoX.fn(data.df[,c(plateName, rowName, colName)], nRow, nCol, byRow=FALSE),
-            "wellType"=data.df[, wellName])
-
-Intensity = "intensity"  
-
-y.vec = data.df[, Intensity]
-
-yrange =  range(y.vec, na.rm=T) 
-
-plot( range(x.df$x), yrange, type="n", xlab="Plate Number (Plate-well series by column)",
-      ylab="Normalized Intensity", axes=FALSE, main="")
-
-axis(2, las=2)
-
-axis(1, at=unique(x.df[,"plateOrder"]-1)*nWell, label=unique(x.df[,"plateOrder"]), las=2 )
-
-box()
-
-for( i in wellplotOrders ) {
-
-  condt = x.df[,"wellType"] == uniqWells[i]
-
-  points( x.df[condt,"x"], y.vec[condt], col=col.vec[i], cex=0.5)
-
-}
-
-legend("bottomright", legend=c("No-cell control", "Positive control", "Test siRNAs", "Negative control"), 
-       col=col.vec[c(1, 2, 4, 7)], pch=1, cex=0.8)
 
 ##### Fig.2b: SSMD
 
