@@ -1,10 +1,10 @@
 
 # qcSSMDhomo
 #**************************************************************************************
-# The main codes for using the R package qcSSMDhomo to generate the 
-# tables, figures and values shown in the following paper.
-#  Zhang XD*, Wang D, Sun S, Zhang H. Issues of z-factor and an 
-#  approach to avoid them for quality control in high-throughput screening studies 
+#The main codes for using the R package qcSSMDhomo to generate the 
+#tables, figures and values shown in the following paper.
+#Zhang XD*, Wang D, Sun S, Zhang H. Issues of z-factor and an 
+#approach to avoid them for quality control in high-throughput screening studies 
 #**************************************************************************************
 
 install.packages("devtools") # If not already installed
@@ -31,7 +31,7 @@ for( i in 1:length(n1.vec) ) {
 rbind(n1.vec, n2.vec, round(ssmdC.vec, 2) )
 #n1.vec 304.00 12.00 76.00 76.00 1276.00 20.00  8.00  8.00  4.00  6.00  5.00   4.0  4.00
 #n2.vec   8.00  8.00  6.00  3.00   12.00 12.00 16.00  8.00  4.00  2.00  2.00   3.0  2.00
-#        -3.47 -4.14 -3.66 -3.83   -3.35 -3.92 -4.03 -4.31 -5.21 -5.28 -5.54  -5.5 -5.93
+#-       -3.47 -4.14 -3.66 -3.83   -3.35 -3.92 -4.03 -4.31 -5.21 -5.28 -5.54  -5.5 -5.93
 
 ##*********************************************************************
 ## For Supplementary Figure 1
