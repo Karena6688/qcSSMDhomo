@@ -2,13 +2,9 @@
 # qcSSMDhomo
 #**************************************************************************************
 
-#The main codes for using the R package qcSSMDhomo to generate the 
+#The main codes for using the R package qcSSMDhomo to generate the tables, figures and values shown in the following paper.
 
-#tables, figures and values shown in the following paper.
-
-#Zhang XD*#, Wang D#, Sun S, Zhang H*. Issues of z-factor and an 
-
-#approach to avoid them for quality control in high-throughput screening studies 
+#Zhang XD*#, Wang D#, Sun S, Zhang H*. Issues of z-factor and an approach to avoid them for quality control in high-throughput screening studies 
 
 #**************************************************************************************
 
