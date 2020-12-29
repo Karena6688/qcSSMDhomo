@@ -6,7 +6,7 @@
 
 #tables, figures and values shown in the following paper.
 
-#Zhang XD*, Wang D, Sun S, Zhang H. Issues of z-factor and an 
+#Zhang XD*#, Wang D#, Sun S, Zhang H*. Issues of z-factor and an 
 
 #approach to avoid them for quality control in high-throughput screening studies 
 
@@ -944,9 +944,9 @@ ssmdEstCore.homoVAR.fn
 
 zFactor.frame.fn
 
-## Author
+## Author for codes
 Dandan Wang and Xiaohua Douglas Zhang, Ph.D., Professor, University of Macau
 
-## Paper
-Issues of z-factor and an approach to avoid them for quality control in high-throughput screening studies 
+## Author for the Paper
+Zhang XD*#, Wang D#, Sun S, Zhang H*. Issues of z-factor and an approach to avoid them for quality control in high-throughput screening studies. Bioinformatics (in press) 
 
